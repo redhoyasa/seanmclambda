@@ -35,3 +35,7 @@ class GoldbrokerTest(unittest.TestCase):
     def test_get_gold_prices_failed(self, response):
         response.return_value.ok = False
         self.assertRaises(Exception, get_latest_gold_prices)
+
+
+if __name__ == '__main__':
+    unittest.main()
