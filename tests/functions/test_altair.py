@@ -1,9 +1,7 @@
 import unittest
-import numpy as np
-import pandas as pd
-import altair as alt
-import json
 from datetime import datetime
+
+import pandas as pd
 
 from functions.altair import generate_time_series_chart_meta
 
