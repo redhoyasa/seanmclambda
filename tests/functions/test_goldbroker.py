@@ -1,4 +1,5 @@
 import unittest
+from datetime import datetime
 from unittest import mock
 
 from functions.goldbroker import *
@@ -25,9 +26,10 @@ class GoldbrokerTest(unittest.TestCase):
             }
         }
         result = get_latest_gold_prices()
+        time_format = "%Y-%m-%dT%H:%M:%S%z"
         expected_result = {
-            "2020-03-26T03:35:02+00:00": 842911.17,
-            "2020-03-26T03:40:03+00:00": 844629.61
+            datetime.strptime("2020-03-26T03:35:02+00:00", time_format): 842911.17,
+            datetime.strptime("2020-03-26T03:40:03+00:00", time_format): 844629.61
         }
         pd.testing.assert_frame_equal(pd.DataFrame(expected_result.items(), columns=['timestamp', 'value']), result)
 

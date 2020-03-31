@@ -20,39 +20,42 @@ class AltairTest(unittest.TestCase):
         result = generate_time_series_chart_meta(df=df, x="timestamp", y="value")
 
         expected_result = {
-            "config": {
-                "view": {
-                    "continuousWidth": 400,
-                    "continuousHeight": 300
-                }
-            },
-            "data": {
-                "name": "data-b9495870e7cafae3f5bd2d0a5f9893fb"
-            },
-            "mark": "line",
-            "encoding": {
-                "x": {
-                    "type": "temporal",
-                    "field": "timestamp"
-                },
-                "y": {
-                    "type": "quantitative",
-                    "field": "value"
-                }
-            },
-            "$schema": "https://vega.github.io/schema/vega-lite/v4.0.2.json",
-            "datasets": {
-                "data-b9495870e7cafae3f5bd2d0a5f9893fb": [{
-                    "timestamp": "2020-03-27T15:00:00",
-                    "value": 1.22
-                }, {
-                    "timestamp": "2020-03-27T16:00:00",
-                    "value": 4.33
-                }, {
-                    "timestamp": "2020-03-27T17:00:00",
-                    "value": 3.22
-                }]
+          'config': {
+            'view': {
+              'continuousWidth': 400,
+              'continuousHeight': 300
             }
+          },
+          'data': {
+            'name': 'data-b9495870e7cafae3f5bd2d0a5f9893fb'
+          },
+          'mark': 'line',
+          'encoding': {
+            'x': {
+              'type': 'temporal',
+              'field': 'timestamp'
+            },
+            'y': {
+              'type': 'quantitative',
+              'field': 'value',
+              'scale': {
+                'zero': False
+              }
+            }
+          },
+          '$schema': 'https://vega.github.io/schema/vega-lite/v4.0.2.json',
+          'datasets': {
+            'data-b9495870e7cafae3f5bd2d0a5f9893fb': [{
+              'timestamp': '2020-03-27T15:00:00',
+              'value': 1.22
+            }, {
+              'timestamp': '2020-03-27T16:00:00',
+              'value': 4.33
+            }, {
+              'timestamp': '2020-03-27T17:00:00',
+              'value': 3.22
+            }]
+          }
         }
         self.assertDictEqual(expected_result, result)
 
