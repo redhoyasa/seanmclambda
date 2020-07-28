@@ -10,10 +10,10 @@ functions:
     handler: handler.broadcast_seanmcgold
     description: Run seanmcgold
     events:
-      - schedule: rate(2 hours)
-      - schedule: cron(0 12 * * ? *)
+      - schedule: rate(1 day)
+      - schedule: cron(0 20 * * *)
       - cloudwatchLog:
-          logGroup: '/aws/lambda/seanmclambda'
+          logGroup: '/aws/lambda/seanmclambda-dev-hello'
     environment:
       SEANMCAPP_KEY: ${param:SEANMCAPP_KEY}
       SEANMCGOLD_SUBSCRIBER: ${param:SEANMCGOLD_SUBSCRIBER}
