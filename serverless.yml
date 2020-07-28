@@ -11,7 +11,7 @@ functions:
     description: Run seanmcgold
     events:
       - schedule: rate(1 day)
-      - schedule: cron(0 20 * * *)
+      - schedule: cron(0 20 * * ? *)
       - cloudwatchLog:
           logGroup: '/aws/lambda/seanmclambda-dev-hello'
     environment:
