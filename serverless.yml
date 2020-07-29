@@ -17,3 +17,10 @@ functions:
     environment:
       SEANMCAPP_KEY: ${param:SEANMCAPP_KEY}
       SEANMCGOLD_SUBSCRIBER: ${param:SEANMCGOLD_SUBSCRIBER}
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
