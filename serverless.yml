@@ -1,3 +1,4 @@
+org: redhoyasa
 service: seanmclambda
 app: seanmclambda
 
@@ -23,4 +24,4 @@ plugins:
 
 custom:
   pythonRequirements:
-    dockerizePip: non-linux
+    dockerizePip: true
