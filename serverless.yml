@@ -11,8 +11,7 @@ functions:
     handler: handler.broadcast_seanmcgold
     description: Run seanmcgold
     events:
-      - schedule: rate(1 day)
-      - schedule: cron(0 14 * * ? *)
+      - schedule: cron(0 14 * * MON-FRI *)
       - cloudwatchLog:
           logGroup: '/aws/lambda/seanmclambda-seanmcgold'
     environment:

@@ -1,6 +1,8 @@
 import unittest
 from unittest import mock
 
+import vcr
+
 from functions.goldbroker import *
 
 
@@ -37,6 +39,14 @@ class GoldbrokerTest(unittest.TestCase):
         response.return_value.ok = False
         self.assertRaises(Exception, get_latest_gold_prices)
 
+    @vcr.use_cassette('fixtures/vcr_cassettes/historical_spot_prices.yaml')
+    def test_historical_gold_prices(self):
+        result = get_historical_gold_prices()
+        date_format = "%Y-%m-%d"
+        expected_result = {
+            datetime.strptime("2020-08-19", date_format): 923703.81,
+        }
+        pd.testing.assert_series_equal(pd.DataFrame(expected_result.items(), columns=['timestamp', 'value']).iloc[0], result.iloc[0])
 
 if __name__ == '__main__':
     unittest.main()

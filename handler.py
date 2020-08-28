@@ -1,17 +1,15 @@
 import logging
 import os
 
-from functions.goldbroker import get_latest_gold_prices
-from functions.dataframe.utils import add_hour
 from functions.altair import generate_time_series_chart_meta
+from functions.goldbroker import get_historical_gold_prices
 from functions.kroki import get_graph
 from functions.seanmcapp import broadcast_photo
 
 
 def broadcast_seanmcgold(event, context):
     logging.info('getting gold price')
-    df_gold = get_latest_gold_prices()
-    df_gold = add_hour(df_gold, column="timestamp", hour=7)
+    df_gold = get_historical_gold_prices()
 
     logging.info('generating chart meta')
     chart_meta = generate_time_series_chart_meta(df_gold, x="timestamp", y="value")
